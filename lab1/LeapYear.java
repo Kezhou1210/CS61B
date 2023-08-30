@@ -6,17 +6,17 @@ public class LeapYear {
     /** Calls isLeapYear to print correct statement.
      *  @param  year to be analyzed
      */
-    public  static  void isLeapYear(int year){
+    public  static boolean isLeapYear(int year){
         if(year%400 == 0){
-            return True;
+            return true;
         }
         if (year%4 ==0 ){
             if(year%100 !=0){
-                return True;
+                return true;
             }
-            return False;
+            return false;
         }
-        return False;
+        return false;
     }
     private static void checkLeapYear(int year) {
         if (isLeapYear(year)) {
