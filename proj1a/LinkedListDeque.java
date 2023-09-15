@@ -2,7 +2,7 @@ import java.util.LinkedList;
 
 public class LinkedListDeque<T>{
 
-    public class TNode<T>{
+    private class TNode<T>{
         public T item;
         public TNode after;
 
@@ -17,8 +17,8 @@ public class LinkedListDeque<T>{
             this.after = after;
         }
     }
-    public TNode first;
-    public int size;
+    private TNode first;
+    private int size;
     public LinkedListDeque(){
         first = new TNode(null,null);
         first.after = first;
@@ -84,7 +84,7 @@ public class LinkedListDeque<T>{
         }
         return (T)temp.item;
     }
-    public T getRecursiveHelper(TNode new_list, int new_index){
+    private T getRecursiveHelper(TNode new_list, int new_index){
         if(new_index == 0){
             return (T)new_list.item;
         }
