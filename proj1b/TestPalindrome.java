@@ -11,26 +11,26 @@ public class TestPalindrome {
         Deque d = palindrome.wordToDeque("persiflage");
         String actual = "";
         for (int i = 0; i < "persiflage".length(); i++) {
-            if (d != null) {
-                actual += d.removeFirst();
-            }
+            actual += d.removeFirst();
         }
         assertEquals("persiflage", actual);
     }
+
     @Test
-    public void testisPalindrome(){
-        String A = "happy";
-        assertFalse(palindrome.isPalindrome(A));
-        String B = null;
-        assertTrue(palindrome.isPalindrome(B));
+    public void testIsPalindrome() {
+        assertTrue(palindrome.isPalindrome(""));
+        assertTrue(palindrome.isPalindrome("a"));
+        assertTrue(palindrome.isPalindrome("aba"));
+        assertTrue(palindrome.isPalindrome("aaccbbbccaa"));
+
+        assertFalse(palindrome.isPalindrome("ab"));
+        assertFalse(palindrome.isPalindrome("ababba"));
     }
 
-    CharacterComparator offbyone = new OffByOne();
     @Test
-    public void testnewisPalindrome(){
-        assertFalse(palindrome.isPalindrome("happy",offbyone));
-        assertFalse(palindrome.isPalindrome("come",offbyone));
-        assertFalse(palindrome.isPalindrome("hapah",offbyone));
-        assertTrue(palindrome.isPalindrome(null,offbyone));
+    public void testIsOffByOnePalindrome() {
+        CharacterComparator cc = new OffByOne();
+        assertTrue(palindrome.isPalindrome("flake", cc));
+        assertFalse(palindrome.isPalindrome("aba", cc));
     }
 }
