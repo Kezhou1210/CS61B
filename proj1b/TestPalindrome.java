@@ -30,7 +30,7 @@ public class TestPalindrome {
     public void testnewisPalindrome(){
         assertFalse(palindrome.isPalindrome("happy",offbyone));
         assertFalse(palindrome.isPalindrome("come",offbyone));
-        assertTrue(palindrome.isPalindrome("hapah",offbyone));
+        assertFalse(palindrome.isPalindrome("hapah",offbyone));
         assertTrue(palindrome.isPalindrome(null,offbyone));
     }
 }
