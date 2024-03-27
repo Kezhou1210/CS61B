@@ -1,11 +1,11 @@
-public class HellowNumbers{
-    public static int larger(int x, int y){
-        if (x>y){
-            return x;
-        }
-        return y;
-    }
+public class HelloNumbers{
     public static void main(String[] args) {
-        System.out.println(larger(-5,10));   
+        int culmulative = 0;
+        int i = 1;
+        while(i <11){
+            System.out.println(culmulative);
+            culmulative += i;
+            i++;
+        }
     }
 }
