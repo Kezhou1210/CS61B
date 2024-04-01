@@ -68,7 +68,7 @@ public class ArrayDeque<T> {
         System.arraycopy(items,1,temp,0,size -1);
         items = temp;
         size--;
-        if(size/items.length <= 0.25){
+        if(size/items.length <= 0.25 && items.length >16){
             resize(items.length/2);
         }
         return x;
@@ -84,7 +84,7 @@ public class ArrayDeque<T> {
         }
         T x = getLast();
         size--;
-        if(size/items.length <= 0.25){
+        if(size/items.length <= 0.25 && items.length > 16){
             resize(items.length/2);
         }
         return x;
