@@ -109,11 +109,11 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst(){
-        if(length/size >= 4 && length >= 16){
-            shrink();
-        }
         if(size ==0){
             return null;
+        }
+        if(length/size >= 4 && length >= 16){
+            shrink();
         }
         size--;
         nextFirst++;
@@ -125,7 +125,7 @@ public class ArrayDeque<T> {
     }
 
     public T get(int index){
-        if(index + nextFirst +1 >length){
+        if(index + nextFirst +1 >=length){
             return items[index+nextFirst+1-length];
         }
         return items[index + nextFirst +1];
