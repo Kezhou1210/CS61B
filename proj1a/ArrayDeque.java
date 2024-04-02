@@ -16,7 +16,8 @@ public class ArrayDeque<T> {
     private void grow(){
         int capacity = length * 2;
         T[] temp = (T[]) new Object[capacity];
-        System.arraycopy(items, 0 , temp, capacity/4, size);
+            System.arraycopy(items, nextFirst+1, temp, capacity/4, length-nextFirst-1);
+            System.arraycopy(items, 0,temp,capacity/4 + length-nextFirst-1, size - length+nextFirst+1);
         items = temp;
         nextFirst = capacity/4 -1;
         nextLast = 3*capacity/4;
@@ -76,18 +77,27 @@ public class ArrayDeque<T> {
         }else{
             start = nextFirst + 1;
         }
-        for(int i = start; i<start+size;i++){
-            System.out.print(items[i] + " ");
+        if(start + size >length-1){
+            for(int i = start; i<length;i++){
+                System.out.print(items[i] + " ");
+            }
+            for(int i =0; i<start+size-length;i++){
+                System.out.print(items[i] + " ");
+            }
+        }else{
+            for(int i = start; i<start+size;i++){
+                System.out.print(items[i] + " ");
+            }
         }
         System.out.println("");
     }
 
     public T removeLast(){
-        if(size/length <= 0.25 && length >= 16){
-            shrink();
-        }
         if(size ==0){
             return null;
+        }
+        if(length/size >=4 && length >= 16){
+            shrink();
         }
         size--;
         nextLast--;
@@ -99,7 +109,7 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst(){
-        if(size/length <= 0.25 && length >= 16){
+        if(length/size >= 4 && length >= 16){
             shrink();
         }
         if(size ==0){
@@ -120,4 +130,5 @@ public class ArrayDeque<T> {
         }
         return items[index + nextFirst +1];
     }
+    
 }

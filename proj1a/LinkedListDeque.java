@@ -1,5 +1,5 @@
 public class LinkedListDeque<T> {
-        public class Node {
+        private class Node {
             public Node prev;
             public T item;
             public Node next;
@@ -19,29 +19,11 @@ public class LinkedListDeque<T> {
         private Node sentinal;
         private int size;
 
-        public LinkedListDeque(T x){
-            sentinal = new Node(null, null);
-            sentinal.next = new Node(sentinal,x,sentinal);
-            sentinal.prev = sentinal.next;
-            size =1;
-        }
-
         public LinkedListDeque(){
             sentinal = new Node(null,null);
             sentinal.next = sentinal;
             sentinal.prev = sentinal;
             size =0;
-        }
-
-        public LinkedListDeque(LinkedListDeque other){
-            Node temp = other.sentinal;
-            sentinal = new Node(null,null);
-            sentinal.next = sentinal;
-            sentinal.prev = sentinal;
-            size = 0;
-            while(temp != other.sentinal){
-                addLast(temp.item);
-            }
         }
 
         public void addFirst(T item){
